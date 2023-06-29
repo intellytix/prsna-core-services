@@ -1,0 +1,3 @@
+DROP TABLE member_auth CASCADE;
+DROP TABLE member CASCADE;
+DROP TABLE organization CASCADE;
