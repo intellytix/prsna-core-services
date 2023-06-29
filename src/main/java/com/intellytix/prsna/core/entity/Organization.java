@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "organization",schema = "prsna")
 public class Organization implements Serializable {
+
 	public static final long serialVersionUID = 1L;
 	
 	@Id
