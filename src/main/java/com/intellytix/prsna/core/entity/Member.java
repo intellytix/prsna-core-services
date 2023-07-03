@@ -69,19 +69,21 @@ public class Member implements Serializable {
 	@Column(name ="update_user")
 	private String updateUser;
 
-	public Member(Long id, Long organizationId, String legalName, String spiritualName, String email, String phoneNumber, String addressLine1, String addressLine2, String state, String zipCode, String country, String userType, Date lastLoginDate, Date createDate, Date updateDate, String createUser, String updateUser) {
+	public Member(Long id, Long organizationId, String legalName, String spiritualName, String email, String phoneNumber, Date dateOfBirth, String addressLine1, String addressLine2, String state, String zipCode, String country, String userType, Long registeredMemberId, Date lastLoginDate, Date createDate, Date updateDate, String createUser, String updateUser) {
 		this.id = id;
 		this.organizationId = organizationId;
 		this.legalName = legalName;
 		this.spiritualName = spiritualName;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+		this.dateOfBirth = dateOfBirth;
 		this.addressLine1 = addressLine1;
 		this.addressLine2 = addressLine2;
 		this.state = state;
 		this.zipCode = zipCode;
 		this.country = country;
 		this.userType = userType;
+		this.registeredMemberId = registeredMemberId;
 		this.lastLoginDate = lastLoginDate;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
@@ -141,36 +143,12 @@ public class Member implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getUserType() {
-		return userType;
+	public Date getDateOfBirth() {
+		return dateOfBirth;
 	}
 
-	public void setUserType(String userType) {
-		this.userType = userType;
-	}
-
-	public Date getLastLoginDate() {
-		return lastLoginDate;
-	}
-
-	public void setLastLoginDate(Date lastLoginDate) {
-		this.lastLoginDate = lastLoginDate;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public Date getUpdateDate() {
-		return updateDate;
-	}
-
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public String getAddressLine1() {
@@ -213,6 +191,46 @@ public class Member implements Serializable {
 		this.country = country;
 	}
 
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	public Long getRegisteredMemberId() {
+		return registeredMemberId;
+	}
+
+	public void setRegisteredMemberId(Long registeredMemberId) {
+		this.registeredMemberId = registeredMemberId;
+	}
+
+	public Date getLastLoginDate() {
+		return lastLoginDate;
+	}
+
+	public void setLastLoginDate(Date lastLoginDate) {
+		this.lastLoginDate = lastLoginDate;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+
 	public String getCreateUser() {
 		return createUser;
 	}
@@ -238,12 +256,14 @@ public class Member implements Serializable {
 				", spiritualName='" + spiritualName + '\'' +
 				", email='" + email + '\'' +
 				", phoneNumber='" + phoneNumber + '\'' +
+				", dateOfBirth=" + dateOfBirth +
 				", addressLine1='" + addressLine1 + '\'' +
 				", addressLine2='" + addressLine2 + '\'' +
 				", state='" + state + '\'' +
 				", zipCode='" + zipCode + '\'' +
 				", country='" + country + '\'' +
 				", userType='" + userType + '\'' +
+				", registeredMemberId=" + registeredMemberId +
 				", lastLoginDate=" + lastLoginDate +
 				", createDate=" + createDate +
 				", updateDate=" + updateDate +
@@ -251,6 +271,4 @@ public class Member implements Serializable {
 				", updateUser='" + updateUser + '\'' +
 				'}';
 	}
-
-
 }

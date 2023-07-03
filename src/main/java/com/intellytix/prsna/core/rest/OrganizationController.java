@@ -25,7 +25,9 @@ public class OrganizationController {
 		return "Hello";
 	}
 	
-	@GetMapping("/organization&name={name}")
+	//@GetMapping("/getOrganization?name={name}")
+	//@RequestMapping(value="/organization?name={name}", method=RequestMethod.GET)
+	@GetMapping("/organization/name={name}")
 	public List<Organization> getOrganizationDetailsByName(@PathVariable("name") String name) {
 		List<Organization> organization = organizationService.getOrganizationByName(name);
 		return organization;
