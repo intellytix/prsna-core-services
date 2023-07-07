@@ -8,6 +8,8 @@ import com.intellytix.prsna.core.entity.Organization;
 @Service
 public interface OrganizationService {
 	
-	public List<Organization> getOrganizationByName(String name);
+	public List<Organization> getOrganizationByName(String name, Boolean apiCheck);
+
+	public Organization addOrUpdateOrganization(Organization organization);
 
 }

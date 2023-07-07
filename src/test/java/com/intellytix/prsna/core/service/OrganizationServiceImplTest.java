@@ -24,7 +24,7 @@ public class OrganizationServiceImplTest{
 		String name="LNCC";
 
 		//OrganizationServiceImpl organizationService=new OrganizationServiceImpl();
-		List<Organization> organization=organizationService.getOrganizationByName(name);
+		List<Organization> organization=organizationService.getOrganizationByName(name, false);
 
 		assertNotNull(organization);
 	}

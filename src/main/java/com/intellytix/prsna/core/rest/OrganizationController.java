@@ -29,21 +29,24 @@ public class OrganizationController {
 	//@RequestMapping(value="/organization?name={name}", method=RequestMethod.GET)
 	@GetMapping("/organization/name={name}")
 	public List<Organization> getOrganizationDetailsByName(@PathVariable("name") String name) {
-		List<Organization> organization = organizationService.getOrganizationByName(name);
+		List<Organization> organization = organizationService.getOrganizationByName(name, true);
 		return organization;
 		
 	}
 
 	@PostMapping("/organization")
-	public ResponseEntity<Organization> createOrganization(@RequestBody Organization organization) {
-		try {
-			Organization organization1 = organizationRepo
-					.save(new Organization(organization.getId(),organization.getOrganizationName(), organization.getAddressLine1(), organization.getAddressLine2()
-					,organization.getState(), organization.getCountry(),organization.getZipCode(), organization.getCreateDate(), organization.getCreateUser(), organization.getUpdateDate(), organization.getUpdateUser()));
-			return new ResponseEntity<>(organization1, HttpStatus.CREATED);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+	public ResponseEntity<Object> createOrganization(@RequestBody Organization organization) {
+
+		  List<Organization> organization1 = organizationService.getOrganizationByName(organization.getOrganizationName(), false);
+
+		  if(organization1 != null && !organization1.isEmpty()){
+			  organization.setId(organization1.get(0).getId());
+		  }
+
+		  Organization organization2 = organizationService.addOrUpdateOrganization(organization);
+
+		  return new ResponseEntity<>(organization2, HttpStatus.CREATED);
+
 	}
 
 }

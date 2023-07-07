@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "organization",schema = "prsna")
@@ -17,6 +19,8 @@ public class Organization implements Serializable {
 	private Long id;
 	
 	@Column(name ="organization_name")
+	@NotBlank(message = "Organization Name is mandatory")
+	@NotNull
 	private String organizationName;
 
 	@Column(name ="address_line1")
